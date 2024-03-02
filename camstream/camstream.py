@@ -80,6 +80,3 @@ def camstream(cam, wide=480, high=320):
     # Close Camera Connection and Stop Script
     cam.release()
     os._exit(0)
-
-cam = cv2.VideoCapture(0)
-camstream(cam)
