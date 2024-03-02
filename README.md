@@ -1,4 +1,4 @@
-# CamStream
+# Camconnect
 
 Simple interface for connect and display the video stream from a camera.
 
