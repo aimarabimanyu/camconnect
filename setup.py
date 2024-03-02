@@ -24,8 +24,8 @@ setup(
     install_requires=['opencv-python', 'tk', 'Pillow'],
     keywords=['python', 'interface', 'stream', 'camera', 'opencv', 'tkinter'],
     license="MIT",
-    url="https://github.com/aimarabimanyu/camstream.git",
+    url="https://github.com/aimarabimanyu/camconnect.git",
     project_urls={
-        'Source': 'https://github.com/aimarabimanyu/camstream.git',
+        'Source': 'https://github.com/aimarabimanyu/camconnect.git',
     },
 )
