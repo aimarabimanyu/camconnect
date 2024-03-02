@@ -16,11 +16,16 @@ setup(
     name="camstream",
     version=VERSION,
     author="Aimar Abimayu Pratama",
-    author_email="<aimarabimanyu123@gmail.com>",
+    author_email="aimarabimanyu123@gmail.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
     install_requires=['opencv-python', 'tk', 'Pillow'],
-    keywords=['python', 'interface', 'stream', 'camera', 'opencv', 'tkinter']
+    keywords=['python', 'interface', 'stream', 'camera', 'opencv', 'tkinter'],
+    license="MIT",
+    url="https://github.com/aimarabimanyu/camstream.git",
+    project_urls={
+        'Source': 'https://github.com/aimarabimanyu/camstream.git',
+    },
 )
