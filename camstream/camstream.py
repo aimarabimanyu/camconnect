@@ -4,79 +4,93 @@ from PIL import Image, ImageTk
 from threading import Thread
 import os
 
-def viewfinder(frame_size, cam, label):
-    while True:
-        # Read Frame and Condition from Camera
-        ret, frame = cam.read()
 
+class WindowCamera:
+    def __init__(self, cam, filename="captured_image.jpg", wide=480, high=320):
+
+        """
+        Windows Class to Create a Tkinter Window for Camera Stream.
+
+        :argument
+        cam: cv2.VideoCapture
+            Camera Object to Stream Video
+        wide: int, default 480
+            Width of the Window
+        high: int, default 320
+            Height of the Window
+        window: tk.Tk
+            Tkinter Window Object
+        label: tk.Label
+            Tkinter Label Object to Show Image
+        button_frame: tk.Frame
+            Tkinter Frame Object to Place Button
+        button_capture: tk.Button
+            Tkinter Button Object to Capture Image
+        thread: Thread
+            Thread Object to Update Image in Realtime
+        """
+
+        self.cam = cam
+        self.filename = filename
+        self.wide = wide
+        self.high = high
+        self.window = tk.Tk()
+        self.window.title("Model Inference App")
+        self.window.geometry(str(wide) + "x" + str(high))
+        self.label = tk.Label(self.window)
+        self.label.pack()
+        self.button_frame = tk.Frame(self.window)
+        self.button_frame.place(relx=0.5, rely=0.9, anchor='center')
+        self.button_capture = tk.Button(self.button_frame, text="Capture", command=lambda: self.capture_image())
+        self.button_capture.pack(side="left", expand=True)
+        self.thread = Thread(target=self.viewfinder)
+        self.thread.start()
+        self.window.mainloop()
+        self.cam.release()
+        os._exit(0)
+
+    def viewfinder(self):
+
+        """
+        Function to Update Image in Realtime.
+
+        :parameter
+        None
+
+        :return
+        None
+        """
+
+        while True:
+            ret, frame = self.cam.read()
+            if ret:
+                frame = cv2.resize(frame, (self.wide, self.high))
+                image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+                image = ImageTk.PhotoImage(image)
+                self.label.config(image=image)
+                self.label.image = image
+
+    def capture_image(self):
+
+        """
+        Function to Capture Image from Camera.
+
+        :parameter
+        filename: str, default "captured_image.jpg"
+            Name of the File to Save Image
+
+        :return
+        None
+        """
+
+        ret, frame = self.cam.read()
         if ret:
-            # Resize Frame to 480x320
-            frame = cv2.resize(frame, frame_size)
-
-            # Convert CV Image to PIL Image
+            frame = cv2.resize(frame, (self.wide, self.high))
+            new_window = tk.Toplevel(self.window)
+            new_label = tk.Label(new_window)
+            new_label.pack()
             image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-
-            # Convert PIL Image to Tkinter Image
             image = ImageTk.PhotoImage(image)
-
-            # Show Image in Label
-            label.config(image=image)
-            label.image = image
-
-def capture_image(frame_size, cam, window):
-    # Read Frame and Condition from Camera
-    ret, frame = cam.read()
-
-    if ret:
-        # Resize Frame to 380x220
-        frame = cv2.resize(frame, frame_size)
-
-        # Open New Window
-        new_window = tk.Toplevel(window)
-        new_label = tk.Label(new_window)
-        new_label.pack()
-
-        # Convert CV Image to PIL Image
-        image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-
-        # Convert PIL Image to Tkinter Image
-        image = ImageTk.PhotoImage(image)
-
-        # Show Image in Label
-        new_label.config(image=image)
-        new_label.image = image
-
-        # Save Image to File
-        cv2.imwrite("captured_image.jpg", frame)
-
-def camstream(cam, wide=480, high=320):
-    # Set Window Size
-    window_size = str(wide) + "x" + str(high)
-
-    # Build Tkinter Window
-    window = tk.Tk()
-    window.title("Model Inference App")
-    window.geometry(window_size)
-
-    # Build Label to Show Image
-    label = tk.Label(window)
-    label.pack()
-
-    # Build Button Frame
-    button_frame = tk.Frame(window)
-    button_frame.place(relx=0.5, rely=0.9, anchor='center')
-
-    # Build Capture Button
-    button_capture = tk.Button(button_frame, text="Capture", command=lambda: capture_image((wide, high), cam, window))
-    button_capture.pack(side="left", expand=True)
-
-    # Build Thread to Update Image
-    thread = Thread(target=viewfinder, kwargs={'frame_size': (wide, high), 'cam': cam, 'label': label})
-    thread.start()
-
-    # Mainloop Tkinter Window
-    window.mainloop()
-
-    # Close Camera Connection and Stop Script
-    cam.release()
-    os._exit(0)
+            new_label.config(image=image)
+            new_label.image = image
+            cv2.imwrite(self.filename, frame)

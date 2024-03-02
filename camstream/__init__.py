@@ -1,1 +1,1 @@
-from camstream import camstream
+from .camstream import WindowCamera
