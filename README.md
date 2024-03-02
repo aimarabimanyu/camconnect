@@ -4,12 +4,20 @@ Simple interface for connect and display the video stream from a camera.
 
 Developed by Aimar Abimayu Pratama (c) 2024
 
+## Installation
+
+```bash
+pip install camstream
+```
+
 ## How To Use
 
 ```python
-from camstream import camstream
+from camstream import WindowCamera
 import cv2
 
-cam = cv2.VideoCapture(0)
-camstream(cam)
+WindowCamera(cv2.VideoCapture(0), filename="output.jpg", width=640, height=480)
 ```
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
