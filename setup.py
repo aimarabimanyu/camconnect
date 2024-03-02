@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'A simple interface for camera streams in Python using OpenCV
 
 # Setting up
 setup(
-    name="camstream",
+    name="camconnect",
     version=VERSION,
     author="Aimar Abimayu Pratama",
     author_email="aimarabimanyu123@gmail.com",

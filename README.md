@@ -7,13 +7,13 @@ Developed by Aimar Abimayu Pratama (c) 2024
 ## Installation
 
 ```bash
-pip install camstream
+pip install camconnect
 ```
 
 ## How To Use
 
 ```python
-from camstream import WindowCamera
+from camconnect import WindowCamera
 import cv2
 
 WindowCamera(cv2.VideoCapture(0), filename="output.jpg", width=640, height=480)
