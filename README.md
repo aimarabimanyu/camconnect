@@ -15,8 +15,7 @@ pip install camconnect
 from camconnect import CaptureImage
 import cv2
 
-CaptureImage(cv2.VideoCapture(0), 
-             filename="output.jpg", 
+CaptureImage(cv2.VideoCapture(0),
              width=480, height=320, 
              window_name="Capture Image", 
              filename="captured_image.jpg").run()
@@ -27,7 +26,6 @@ from camconnect import RecordVideo
 import cv2
 
 RecordVideo(cv2.VideoCapture(0), 
-            filename="output.jpg", 
             width=480, height=320, 
             window_name="Record Video", 
             filename="recorded_video.avi").run()
@@ -38,7 +36,6 @@ from camconnect import PredictImage
 import cv2
 
 PredictImage(cv2.VideoCapture(0), 
-             filename="output.jpg", 
              width=480, height=320,
              save_image=True,
              window_name="Predict Image", 
