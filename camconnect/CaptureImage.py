@@ -10,16 +10,24 @@ class CaptureImage(WindowClass):
         Constructor for CaptureImage Class.
 
         Attributes:
-            cam: cv2.VideoCapture
-                Camera Object to Stream Video
-            width: int
-                Width of the Window
-            height: int
-                Height of the Window
-            window_name: str, default "Capture Image"
-                Name of the Window
             filename: str, default "captured_image.jpg"
                 Name of the Captured Image
+            cam: cv2.VideoCapture
+                Camera Object to Stream Video
+            width: int, default 480
+                Width of the Window
+            height: int, default 320
+                Height of the Window
+            window: tk.Tk
+                Tkinter Window Object
+            label: tk.Label
+                Tkinter Label Object to Show Image
+            thread: Thread
+                Thread Object to Update Image in Realtime
+            button_frame: tk.Frame
+                Tkinter Frame Object to Place Capture Buttons
+            button_capture: tk.Button
+                Tkinter Button Object to Capture Image
 
         Returns:
             None
@@ -37,7 +45,7 @@ class CaptureImage(WindowClass):
         """
         Function to Capture Image from Camera.
 
-        Attributes:
+        Arguments:
             None
 
         Returns:

@@ -44,7 +44,7 @@ class WindowClass:
         """
         Function to Update Image in Realtime.
 
-        Argument:
+        Arguments:
             None
 
         Returns:

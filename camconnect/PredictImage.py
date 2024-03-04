@@ -7,19 +7,19 @@ class PredictImage(WindowClass):
     def __init__(self, cam, width, height, save_image=True, window_name="Predict Image", inference_model=lambda frame: (globals().update({'frame_var': frame}), "Model Not Loaded")[1]):
 
         """
-        Constructor for CaptureImage Class.
+        Constructor for PredictImage Class.
 
         Attributes:
             cam: cv2.VideoCapture
                 Camera Object to Stream Video
-            width: int
+            width: int, default 480
                 Width of the Window
-            height: int
+            height: int, default 320
                 Height of the Window
-            window_name: str, default "Capture Image"
-                Name of the Window
-            filename: str, default "captured_image.jpg"
-                Name of the Captured Image
+            inference_model: function, default lambda frame: (globals().update({'frame_var': frame}), "Model Not Loaded")[1]
+                Inference Model Function to Predict Image
+            save_image: bool, default True
+                Save Image to Local Directory
 
         Returns:
             None
@@ -38,7 +38,7 @@ class PredictImage(WindowClass):
         """
         Function to Capture Image from Camera.
 
-        Attributes:
+        Arguments:
             None
 
         Returns:
@@ -60,5 +60,3 @@ class PredictImage(WindowClass):
                 cv2.imwrite(result + ".jpg", frame)
             result_label = tk.Label(new_window, text=str(result))
             result_label.pack()
-
-PredictImage(cv2.VideoCapture(0), 480, 320).run()

@@ -10,16 +10,28 @@ class RecordVideo(WindowClass):
         Constructor for RecordVideo Class.
 
         Attributes:
-            cam: cv2.VideoCapture
-                Camera Object to Stream Video
-            width: int
-                Width of the Window
-            height: int
-                Height of the Window
-            window_name: str, default "Record Video"
-                Name of the Window
             filename: str, default "recorded_video.avi"
                 Name of the Recorded Video
+            cam: cv2.VideoCapture
+                Camera Object to Stream Video
+            width: int, default 480
+                Width of the Window
+            height: int, default 320
+                Height of the Window
+            window: tk.Tk
+                Tkinter Window Object
+            label: tk.Label
+                Tkinter Label Object to Show Image
+            thread: Thread
+                Thread Object to Update Image in Realtime
+            button_frame: tk.Frame
+                Tkinter Frame Object to Place Record and Stop Buttons
+            button_record: tk.Button
+                Tkinter Button Object to Start Recording Video
+            button_stop: tk.Button
+                Tkinter Button Object to Stop Recording Video
+            status_label: tk.Label
+                Tkinter Label Object to Show Recording Status
 
         Returns:
             None
@@ -56,7 +68,7 @@ class RecordVideo(WindowClass):
         """
         Function to Record Video from Camera.
 
-        Attributes:
+        Arguments:
             None
 
         Returns:
@@ -75,7 +87,7 @@ class RecordVideo(WindowClass):
         """
         Function to Stop Recording Video.
 
-        Attributes:
+        Arguments:
             None
 
         Returns:
