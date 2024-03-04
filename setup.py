@@ -7,9 +7,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.1'
-DESCRIPTION = 'Simple Interface for Camera Streams in Python'
-LONG_DESCRIPTION = 'A simple interface for camera streams in Python using OpenCV and Tkinter.'
+VERSION = '0.1.1'
+DESCRIPTION = 'Simple Interface for Camera in Python'
+LONG_DESCRIPTION = 'A simple interface for connect, display, and interaction with the camera in Python using OpenCV and Tkinter.'
 
 # Setting up
 setup(
