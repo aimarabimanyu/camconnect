@@ -4,8 +4,8 @@ from PIL import Image, ImageTk
 from threading import Thread
 import os
 
-class Window:
-    def __init__(self, cam, window_name="Application", width=480, height=320):
+class WindowClass:
+    def __init__(self, cam, width=480, height=320, window_name="Application"):
 
         """
         Windows Class to Create a Tkinter Window for Camera Stream.
