@@ -16,7 +16,7 @@ class PredictImage(WindowClass):
                 Width of the Window
             height: int, default 320
                 Height of the Window
-            inference_model: function, default lambda frame: (globals().update({'frame_var': frame}), "Model Not Loaded")[1]
+            inference_model: function with return string, default lambda frame: (globals().update({'frame_var': frame}), "Model Not Loaded")[1]
                 Inference Model Function to Predict Image
             save_image: bool, default True
                 Save Image to Local Directory
