@@ -1,5 +1,5 @@
 import cv2
-from Window import WindowClass
+from camconnect.Window import WindowClass
 import tkinter as tk
 from PIL import Image, ImageTk
 
