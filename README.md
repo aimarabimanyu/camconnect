@@ -1,6 +1,6 @@
 # Camconnect
 
-Simple interface for connect, display, and interaction with the camera.
+Simple interface for connect, display, and interaction with the camera built with Python
 
 ## Installation
 
